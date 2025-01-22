@@ -7,11 +7,17 @@ from passlib.context import CryptContext
 #убрать TEST, если уйдёт в production
 SECRET_KEY = getenv("SECRET_KEY","TEST")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 15
+ACCESS_TOKEN_EXPIRE_MINUTES = timedelta(minutes=30)
 REFRESH_TOKEN_EXPIRE_TIME = timedelta(days=1)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+
+def check_password(password, user_password):
+    return pwd_context.verify(password, user_password)
+
+def check_token(token, user_token):
+    return token == user_token
 
 def create_token(typ:str, data: dict, expires_delta: timedelta):
     to_encode = data.copy()

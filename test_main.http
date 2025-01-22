@@ -1,11 +1,16 @@
 # Test your FastAPI endpoints
 
-GET http://127.0.0.1:8000/
+POST http://127.0.0.1:8000/tasks
 Accept: application/json
+Content-Type: application/json
+x-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXb3dhIiwiZXhwIjoxNzM3NTU2Nzg4LCJ0eXAiOiJhY2Nlc3MifQ.1dXhBEkQBgEScpHZS8Z4w2wTylC5QmYd6152pKw4yEQ
 
-###
+{
+  "name":"Сделать с три пизды",
+"description":"матан и прочие штуки",
+  "status":false
+}
 
-GET http://127.0.0.1:8000/hello/User
-Accept: application/json
 
-###
+
+
